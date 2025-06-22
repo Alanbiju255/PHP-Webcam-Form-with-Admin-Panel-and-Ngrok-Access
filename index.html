@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webcam Form Upload</title>
+  <script>
+    let webcamStream;
+
+    window.onload = function () {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          webcamStream = stream;
+          document.getElementById("video").srcObject = stream;
+        })
+        .catch(function (err) {
+          alert("Error accessing webcam: " + err);
+        });
+    };
+
+    function captureAndSubmit() {
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(video, 0, 0, 320, 240);
+
+      const dataURL = canvas.toDataURL("image/png");
+      document.getElementById("capturedImage").value = dataURL;
+
+      // Submit the form after capture
+      document.getElementById("dataForm").submit();
+    }
+  </script>
+</head>
+<body>
+  <h2>User Details with Webcam</h2>
+  <form id="dataForm" action="upload.php" method="POST">
+    <input type="text" name="name" placeholder="Name" required><br>
+    <input type="number" name="age" placeholder="Age" required><br>
+    <input type="text" name="number" placeholder="Phone Number" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+
+    <video id="video" width="320" height="240" autoplay></video><br>
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+    <input type="hidden" name="image_data" id="capturedImage">
+
+    <button type="button" onclick="captureAndSubmit()">📸 Capture & Submit</button>
+  </form>
+</body>
+</html>
