@@ -2,7 +2,7 @@
 
 ## 📁 Project Structure
 ```
-/html
+/testform
 ├── index.html           ← Form for user input
 ├── upload.php           ← Handles data & image upload
 ├── admin.php            ← Admin dashboard
@@ -59,6 +59,9 @@ ngrok http 80
 ```
 Use public URL like `https://abcd.ngrok.io`
 
+👉 For a complete step-by-step guide on installing Apache and Ngrok in Linux, read:
+📖 [How to host a web server using Apache in Linux with port forwarding and ngrok](https://medium.com/@alanbiju255/how-to-host-a-web-server-using-apache-in-linux-with-port-forwarding-and-ngrok-21a3afd34d20)
+
 ---
 
 ## 🔒 .htaccess (Optional)
@@ -83,7 +86,10 @@ Configure via your router admin page:
 - External Port: 8080 → Internal Port: 80
 - Internal IP: 192.168.1.x
 
+📘 Need help understanding router port forwarding?
+Check out this blog: [What is port forwarding in a router - A beginner's guide](https://medium.com/@alanbiju255/what-is-port-forwarding-in-a-router-a-beginners-guide-3ac04b923649)
+
 ---
 
 ## 📝 License & Author
- Developed by  alan. Contributions welcome.
+ Developed by alan . Contributions welcome.
